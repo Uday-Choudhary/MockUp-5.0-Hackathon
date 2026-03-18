@@ -1,7 +1,25 @@
+import { useState, useEffect } from 'react';
 import Sidebar from '../../components/Sidebar';
+import { getBreakingNews, getNewsFeed, getVideos, getChampionship, getNextRace } from '../../api';
 import './Paddock.css';
 
 export default function Paddock() {
+  const [breaking, setBreaking] = useState(null);
+  const [feed, setFeed] = useState([]);
+  const [videos, setVideos] = useState([]);
+  const [championship, setChampionship] = useState([]);
+  const [nextRace, setNextRace] = useState(null);
+
+  useEffect(() => {
+    Promise.all([getBreakingNews(), getNewsFeed(), getVideos(), getChampionship(), getNextRace()]).then(([br, fd, vids, champ, nr]) => {
+      if (br) setBreaking(br);
+      if (fd) setFeed(fd);
+      if (vids) setVideos(vids);
+      if (champ) setChampionship(champ);
+      if (nr) setNextRace(nr);
+    });
+  }, []);
+
   return (
     <div className="layout">
       <Sidebar raceMode={true} />
@@ -27,33 +45,32 @@ export default function Paddock() {
           {/* Left Column */}
           <div className="pad-col-l">
             {/* Breaking */}
-            <div className="featured">
-              <div className="feat-body">
-                <div className="feat-tag-row">
-                  <div className="breaking-badge"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" style={{marginRight:3, verticalAlign:'middle'}}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> Breaking</div>
-                  <div className="feat-source">MOTOGP.COM · 2 MIN AGO</div>
-                </div>
-                <div className="feat-headline">Marquez confirms Ducati contract extension for 2027 season — multi-year deal signed</div>
-                <div className="feat-excerpt">The six-time world champion ends months of speculation, securing his place at the Ducati Lenovo factory team for at least another two years.</div>
-                <div className="feat-meta">
-                  <span>MotoGP.com</span>
-                  <div className="dot" />
-                  <span>Breaking News</span>
-                  <div className="dot" />
-                  <span>2 min ago</span>
-                  <div className="read-link">Read full story <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" /></svg></div>
+            {breaking && (
+              <div className="featured">
+                <div className="feat-body">
+                  <div className="feat-tag-row">
+                    <div className="breaking-badge"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" style={{marginRight:3, verticalAlign:'middle'}}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>{breaking.tag}</div>
+                    <div className="feat-source">{breaking.source}</div>
+                  </div>
+                  <div className="feat-headline">{breaking.headline}</div>
+                  <div className="feat-excerpt">{breaking.excerpt}</div>
+                  <div className="feat-meta">
+                    <span>{breaking.meta.publisher}</span>
+                    <div className="dot" />
+                    <span>{breaking.meta.category}</span>
+                    <div className="dot" />
+                    <span>{breaking.meta.time}</span>
+                    <div className="read-link">Read full story <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" /></svg></div>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
 
             {/* Wired Different */}
             <div>
               <div className="section-header"><div className="pad-section-title">Wired Different</div></div>
               <div className="vid-row">
-                {[
-                  { title: 'How Bagnaia corners at 320 km/h — onboard analysis', dur: '4:32', meta: 'MotoGP Official · 3h ago' },
-                  { title: 'Inside the Ducati pit wall — Qatar GP race strategy revealed', dur: '6:18', meta: 'Box Raju · 5h ago' },
-                ].map((v, i) => (
+                {videos.map((v, i) => (
                   <div key={i} className="vid-card">
                     <div className="vid-thumb">
                       <div className="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg></div>
@@ -67,12 +84,7 @@ export default function Paddock() {
 
             {/* News Feed */}
             <div className="news-list">
-              {[
-                { initials: 'MM', hl: 'Márquez sets new Lusail lap record in dominant Qatar display — breaks 2019 benchmark', meta: 'Autosport · 34m ago' },
-                { initials: 'FB', hl: 'Bagnaia: "We had the pace to win — tyre strategy decision cost us the victory"', meta: 'GPOne · 1h ago', rider: true },
-                { initials: 'JM', hl: "Martín's P3 finish keeps championship gap to just 21 points ahead of Austin", meta: 'Motorsport.com · 1h ago' },
-                { initials: 'DC', hl: 'Ducati confirm both riders receive upgraded aero package for Circuit of Americas', meta: 'MotoGP.com · 2h ago' },
-              ].map((n, i) => (
+              {feed.map((n, i) => (
                 <div key={i} className={`news-card ${n.rider ? 'news-card--rider' : ''}`}>
                   <div className="rider-avatar-pad">{n.initials}</div>
                   <div className="news-body">
@@ -92,15 +104,25 @@ export default function Paddock() {
             {/* Race Week */}
             <div className="glass-card">
               <div className="gc-label">Next Race</div>
-              <div className="race-week-title">Austin GP</div>
+              <div className="race-week-title">{nextRace?.name || 'Austin GP'}</div>
               <div className="countdown">
-                {[['03','Days'],['14','Hrs'],['22','Min']].map(([n,l]) => (
+                {[
+                  [nextRace?.countdown?.days || '03', 'Days'],
+                  [nextRace?.countdown?.hours || '14', 'Hrs'],
+                  [nextRace?.countdown?.minutes || '22', 'Min'],
+                ].map(([n, l]) => (
                   <div key={l} className="cd-unit"><div className="cd-num">{n}</div><div className="cd-lbl">{l}</div></div>
                 ))}
               </div>
               <div className="session-list">
-                {[['Free Practice 1','Fri · 10:00'],['Free Practice 2','Fri · 15:00'],['Qualifying','Sat · 11:30'],['Sprint Race','Sat · 15:00'],['Main Race','Sun · 14:00']].map(([name,time]) => (
-                  <div key={name} className="sess-row"><span className="sess-name">{name}</span><span className="sess-time">{time}</span></div>
+                {(nextRace?.sessions || [
+                  { name: 'Free Practice 1', time: 'Fri · 10:00' },
+                  { name: 'Free Practice 2', time: 'Fri · 15:00' },
+                  { name: 'Qualifying', time: 'Sat · 11:30' },
+                  { name: 'Sprint Race', time: 'Sat · 15:00' },
+                  { name: 'Main Race', time: 'Sun · 14:00' },
+                ]).map(s => (
+                  <div key={s.name} className="sess-row"><span className="sess-name">{s.name}</span><span className="sess-time">{s.time}</span></div>
                 ))}
               </div>
             </div>
@@ -108,13 +130,7 @@ export default function Paddock() {
             {/* Championship */}
             <div className="glass-card">
               <div className="gc-label" style={{ marginBottom: 12 }}>Championship</div>
-              {[
-                { pos: 1, name: 'Márquez', pts: 142, bar: '#E8002D', delta: '▲2', deltaClass: 'delta-up' },
-                { pos: 2, name: 'Bagnaia', pts: 138, bar: 'var(--accent-blue)', delta: '—', deltaClass: 'delta-same', highlight: true },
-                { pos: 3, name: 'Martín', pts: 121, bar: '#E8002D', delta: '▲1', deltaClass: 'delta-up' },
-                { pos: 4, name: 'Espargaro', pts: 109, bar: '#009900', delta: '▼1', deltaClass: 'delta-down' },
-                { pos: 5, name: 'Bastianini', pts: 98, bar: 'var(--gold-leader)', delta: '—', deltaClass: 'delta-same' },
-              ].map(r => (
+              {championship.map(r => (
                 <div key={r.pos} className="champ-row">
                   <div className="champ-pos">{r.pos}</div>
                   <div className="champ-bar" style={{ background: r.bar }} />

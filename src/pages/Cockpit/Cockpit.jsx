@@ -1,11 +1,23 @@
 import Sidebar from '../../components/Sidebar';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { getLiveStandings, getCurrentRace } from '../../api';
 import './Cockpit.css';
 
 export default function Cockpit() {
   const navigate = useNavigate();
   const [telemetry, setTelemetry] = useState({ speed: 312, lean: 62, gforce: 1.6, rpm: 85 });
+  const [standings, setStandings] = useState([]);
+  const [raceData, setRaceData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    Promise.all([getLiveStandings(), getCurrentRace()]).then(([standingsData, raceInfo]) => {
+      if (standingsData) setStandings(standingsData);
+      if (raceInfo) setRaceData(raceInfo);
+      setLoading(false);
+    });
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -19,6 +31,21 @@ export default function Cockpit() {
     return () => clearInterval(interval);
   }, []);
 
+  const sectors = raceData?.sectors || [
+    { id: 'S1', time: '24.892' },
+    { id: 'S2', time: '19.341' },
+    { id: 'S3', time: '19.143', purple: true },
+    { id: 'LAP', time: '1:23.376' },
+  ];
+  const conditions = raceData?.conditions || { trackTemp: '52°', airTemp: '31°', condition: 'DRY' };
+  const tyres = raceData?.tyreStrategy || [
+    { name: 'Front Tyre', compound: 'S', type: 'soft', wear: 72, color: 'rgba(232,0,45,0.7)', lap: 'L18' },
+    { name: 'Rear Tyre', compound: 'M', type: 'med', wear: 58, color: 'rgba(255,215,0,0.7)', lap: 'L18' },
+  ];
+  const raceName = raceData?.name || 'QATAR GP';
+  const lap = raceData?.lap || 18;
+  const totalLaps = raceData?.totalLaps || 22;
+
   return (
     <div className="layout">
       <Sidebar raceMode={true} />
@@ -28,7 +55,7 @@ export default function Cockpit() {
           <div className="cockpit-title">The Cockpit</div>
           <div className="topbar-right">
             <div className="race-info">
-              <strong>QATAR GP</strong> · LAP <strong>18</strong>/22
+              <strong>{raceName}</strong> · LAP <strong>{lap}</strong>/{totalLaps}
             </div>
             <div className="live-pill">
               <div className="live-dot" />
@@ -51,7 +78,7 @@ export default function Cockpit() {
               <div className="vid-play">
                 <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
               </div>
-              <div className="vid-label-main">BROADCAST FEED — QATAR GP · 2026</div>
+              <div className="vid-label-main">BROADCAST FEED — {raceName} · 2026</div>
             </div>
           </div>
         </div>
@@ -123,33 +150,19 @@ export default function Cockpit() {
 
         {/* Sector Strip */}
         <div className="sector-strip">
-          <div className="sector-box">
-            <div className="sector-header">
-              <span className="sector-id">S1</span>
+          {sectors.map(s => (
+            <div key={s.id} className={`sector-box ${s.purple ? 'sector-box--purple' : ''}`} onClick={s.purple ? () => navigate('/purple-sector') : undefined}>
+              <div className="sector-header">
+                <span className="sector-id">{s.id}</span>
+              </div>
+              <div className="sector-time">{s.time}</div>
+              {s.purple && (
+                <div className="sector-fastest-label">
+                  <span className="sector-star">★</span> Fastest Sector
+                </div>
+              )}
             </div>
-            <div className="sector-time">24.892</div>
-          </div>
-          <div className="sector-box">
-            <div className="sector-header">
-              <span className="sector-id">S2</span>
-            </div>
-            <div className="sector-time">19.341</div>
-          </div>
-          <div className="sector-box sector-box--purple" onClick={() => navigate('/purple-sector')}>
-            <div className="sector-header">
-              <span className="sector-id">S3</span>
-            </div>
-            <div className="sector-time">19.143</div>
-            <div className="sector-fastest-label">
-              <span className="sector-star">★</span> Fastest Sector
-            </div>
-          </div>
-          <div className="sector-box">
-            <div className="sector-header">
-              <span className="sector-id">LAP</span>
-            </div>
-            <div className="sector-time">1:23.376</div>
-          </div>
+          ))}
         </div>
       </main>
 
@@ -161,16 +174,7 @@ export default function Cockpit() {
             <div className="rs-title">Live Standings</div>
           </div>
           <div className="lb-list">
-            {[
-              { pos: 1, name: 'M. Márquez', gap: 'LEADER', team: '#E8002D', leader: true },
-              { pos: 2, name: 'F. Bagnaia', gap: '+0.342', team: '#00A8FF', user: true },
-              { pos: 3, name: 'J. Martín', gap: '+1.108', team: '#E8002D' },
-              { pos: 4, name: 'A. Espargaro', gap: '+4.221', team: '#009900' },
-              { pos: 5, name: 'E. Bastianini', gap: '+5.687', team: '#FFD700' },
-              { pos: 6, name: 'B. Binder', gap: '+7.334', team: '#CC0099' },
-              { pos: 7, name: 'J. Zarco', gap: '+9.118', team: '#FF6600' },
-              { pos: 8, name: 'A. Rins', gap: '+12.003', team: '#009900' },
-            ].map(r => (
+            {standings.map(r => (
               <div key={r.pos} className={`lb-row ${r.leader ? 'lb-row--leader' : ''} ${r.user ? 'lb-row--user' : ''}`}>
                 <div className="lb-team-bar" style={{ background: r.team }} />
                 <div className="lb-pos">{r.pos}</div>
@@ -185,10 +189,7 @@ export default function Cockpit() {
         {/* Tyre Strategy */}
         <div className="tyre-card">
           <div className="tyre-card-title">Tyre Strategy — Bagnaia #1</div>
-          {[
-            { name: 'Front Tyre', compound: 'S', type: 'soft', wear: 72, color: 'rgba(232,0,45,0.7)', lap: 'L18' },
-            { name: 'Rear Tyre', compound: 'M', type: 'med', wear: 58, color: 'rgba(255,215,0,0.7)', lap: 'L18' },
-          ].map(t => (
+          {tyres.map(t => (
             <div key={t.name} className="tyre-row">
               <div className="tyre-name">{t.name}</div>
               <div className={`tyre-compound tyre-compound--${t.type}`}>{t.compound}</div>
@@ -205,15 +206,15 @@ export default function Cockpit() {
           <div className="conditions-title">Race Conditions</div>
           <div className="conditions-grid">
             <div className="cond-cell">
-              <div className="cond-val">52°</div>
+              <div className="cond-val">{conditions.trackTemp}</div>
               <div className="cond-lbl">Track Temp</div>
             </div>
             <div className="cond-cell">
-              <div className="cond-val">31°</div>
+              <div className="cond-val">{conditions.airTemp}</div>
               <div className="cond-lbl">Air Temp</div>
             </div>
             <div className="cond-cell">
-              <div className="cond-dry">DRY</div>
+              <div className="cond-dry">{conditions.condition}</div>
               <div className="cond-lbl">Condition</div>
             </div>
           </div>

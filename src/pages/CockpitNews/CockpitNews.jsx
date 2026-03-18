@@ -1,7 +1,27 @@
+import { useState, useEffect } from 'react';
 import Sidebar from '../../components/Sidebar';
+import { getChampionship, getLatestNews, getRaceCalendar, getCurrentRace } from '../../api';
 import './CockpitNews.css';
 
 export default function CockpitNews() {
+  const [championship, setChampionship] = useState([]);
+  const [news, setNews] = useState([]);
+  const [calendar, setCalendar] = useState([]);
+  const [raceData, setRaceData] = useState(null);
+
+  useEffect(() => {
+    Promise.all([getChampionship(), getLatestNews(), getRaceCalendar(), getCurrentRace()]).then(([champ, newsData, cal, race]) => {
+      if (champ) setChampionship(champ);
+      if (newsData) setNews(newsData);
+      if (cal) setCalendar(cal);
+      if (race) setRaceData(race);
+    });
+  }, []);
+
+  const raceResult = raceData?.raceResult;
+  const highlights = raceData?.highlights;
+  const nextRaceCalendar = calendar.find(c => c.next);
+
   return (
     <div className="news-layout">
       <Sidebar raceMode={false} />
@@ -22,7 +42,7 @@ export default function CockpitNews() {
         <div className="news-video-section">
           <div className="news-video-box">
             <div className="nvid-grid" />
-            <div className="nvid-label">Last Race · Qatar GP 2026</div>
+            <div className="nvid-label">{highlights?.label || 'Last Race · Qatar GP 2026'}</div>
             <div className="nvid-center">
               <div className="nplay-btn">
                 <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
@@ -30,8 +50,8 @@ export default function CockpitNews() {
               <div className="nplay-label">Watch Highlights</div>
             </div>
             <div className="nvid-bottom">
-              <div className="nvid-race-label">Qatar Grand Prix</div>
-              <div className="nvid-race-sub">Race Highlights · 8:43</div>
+              <div className="nvid-race-label">{highlights?.raceName || 'Qatar Grand Prix'}</div>
+              <div className="nvid-race-sub">Race Highlights · {highlights?.duration || '8:43'}</div>
             </div>
           </div>
         </div>
@@ -48,15 +68,15 @@ export default function CockpitNews() {
           {/* Race Result Card */}
           <div className="result-card">
             <div className="rc-header">
-              <div className="rc-title">Qatar GP — Final Result</div>
-              <div className="rc-badge">COMPLETED</div>
+              <div className="rc-title">{raceResult?.title || 'Qatar GP — Final Result'}</div>
+              <div className="rc-badge">{raceResult?.status || 'COMPLETED'}</div>
             </div>
             <div className="podium-row">
-              {[
+              {(raceResult?.podium || [
                 { pos: 1, name: 'M. Márquez', team: 'Ducati Lenovo', time: '1:29.473 FL' },
                 { pos: 2, name: 'F. Bagnaia', team: 'Ducati Lenovo', time: '+0.342s' },
                 { pos: 3, name: 'J. Martín', team: 'Pramac Racing', time: '+1.108s' },
-              ].map(p => (
+              ]).map(p => (
                 <div key={p.pos} className="podium-item">
                   <div className="podium-pos">{p.pos}</div>
                   <div className="podium-name">{p.name}</div>
@@ -66,9 +86,9 @@ export default function CockpitNews() {
               ))}
             </div>
             <div className="result-meta">
-              <div className="rmeta-cell"><div className="rmeta-val">1:29.473</div><div className="rmeta-lbl">Fastest Lap</div></div>
-              <div className="rmeta-cell"><div className="rmeta-val">22 / 310km</div><div className="rmeta-lbl">Laps · Distance</div></div>
-              <div className="rmeta-cell"><div className="rmeta-val">DRY · 52°C</div><div className="rmeta-lbl">Conditions</div></div>
+              <div className="rmeta-cell"><div className="rmeta-val">{raceResult?.fastestLap || '1:29.473'}</div><div className="rmeta-lbl">Fastest Lap</div></div>
+              <div className="rmeta-cell"><div className="rmeta-val">{raceResult?.lapsDistance || '22 / 310km'}</div><div className="rmeta-lbl">Laps · Distance</div></div>
+              <div className="rmeta-cell"><div className="rmeta-val">{raceResult?.conditions || 'DRY · 52°C'}</div><div className="rmeta-lbl">Conditions</div></div>
             </div>
           </div>
 
@@ -98,13 +118,7 @@ export default function CockpitNews() {
           <table className="standings-table">
             <thead><tr><th></th><th></th><th>Rider</th><th style={{ textAlign: 'right' }}>Pts</th></tr></thead>
             <tbody>
-              {[
-                { pos: 1, name: 'M. Márquez', pts: 142, bar: '#E8002D', leader: true },
-                { pos: 2, name: 'F. Bagnaia', pts: 138, bar: '#00A8FF', fav: true },
-                { pos: 3, name: 'J. Martín', pts: 121, bar: '#E8002D' },
-                { pos: 4, name: 'A. Espargaro', pts: 109, bar: '#009900' },
-                { pos: 5, name: 'E. Bastianini', pts: 98, bar: '#FFD700' },
-              ].map(r => (
+              {championship.map(r => (
                 <tr key={r.pos} className={r.leader ? 'leader-row' : ''}>
                   <td className="s-pos">{r.pos}</td>
                   <td><span className="s-bar" style={{ background: r.bar }} /></td>
@@ -119,12 +133,7 @@ export default function CockpitNews() {
         {/* Latest News */}
         <div className="nrs-block">
           <div className="nrs-title">Latest News</div>
-          {[
-            { hl: 'Márquez sets new Lusail lap record in dominant display', src: 'MotoGP.com', ago: '12m ago' },
-            { hl: 'Bagnaia: "We had the pace to win — strategy cost us today"', src: 'GPOne', ago: '34m ago' },
-            { hl: 'Ducati confirm both riders on upgraded aero for COTA', src: 'Autosport', ago: '1h ago' },
-            { hl: 'Michelin announce new tyre allocation for Austin weekend', src: 'Motorsport.com', ago: '2h ago' },
-          ].map((n, i) => (
+          {news.map((n, i) => (
             <div key={i} className="news-item-n">
               <div className="news-hl-n">{n.hl}</div>
               <div className="news-meta-n"><span>{n.src}</span><span>·</span><span>{n.ago}</span></div>
@@ -135,11 +144,7 @@ export default function CockpitNews() {
         {/* Calendar */}
         <div className="nrs-block">
           <div className="nrs-title">Race Calendar</div>
-          {[
-            { day: '21', mon: 'Mar', race: 'Austin GP', circuit: 'Circuit of The Americas · USA', next: true },
-            { day: '06', mon: 'Apr', race: 'Argentina GP', circuit: 'Termas de Río Hondo · ARG' },
-            { day: '20', mon: 'Apr', race: 'Spain GP', circuit: 'Circuit de Jerez · ESP' },
-          ].map((c, i) => (
+          {calendar.map((c, i) => (
             <div key={i} className="cal-item">
               <div className="cal-date-box"><div className="cal-day">{c.day}</div><div className="cal-mon">{c.mon}</div></div>
               <div className="cal-info">
