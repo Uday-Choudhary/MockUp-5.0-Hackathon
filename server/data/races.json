@@ -1,0 +1,78 @@
+{
+  "current": {
+    "name": "QATAR GP",
+    "lap": 18,
+    "totalLaps": 22,
+    "sectors": [
+      { "id": "S1", "time": "24.892" },
+      { "id": "S2", "time": "19.341" },
+      { "id": "S3", "time": "19.143", "purple": true },
+      { "id": "LAP", "time": "1:23.376" }
+    ],
+    "conditions": {
+      "trackTemp": "52°",
+      "airTemp": "31°",
+      "condition": "DRY"
+    },
+    "tyreStrategy": [
+      { "name": "Front Tyre", "compound": "S", "type": "soft", "wear": 72, "color": "rgba(232,0,45,0.7)", "lap": "L18" },
+      { "name": "Rear Tyre", "compound": "M", "type": "med", "wear": 58, "color": "rgba(255,215,0,0.7)", "lap": "L18" }
+    ],
+    "purpleSector": {
+      "rider": "BAGNAIA",
+      "time": "19.143",
+      "sector": "SECTOR 3 · LUSAIL CIRCUIT",
+      "peakGForce": "1.6G",
+      "maxLean": "62°",
+      "entrySpeed": "312 KM/H"
+    },
+    "raceResult": {
+      "title": "Qatar GP — Final Result",
+      "status": "COMPLETED",
+      "podium": [
+        { "pos": 1, "name": "M. Márquez", "team": "Ducati Lenovo", "time": "1:29.473 FL" },
+        { "pos": 2, "name": "F. Bagnaia", "team": "Ducati Lenovo", "time": "+0.342s" },
+        { "pos": 3, "name": "J. Martín", "team": "Pramac Racing", "time": "+1.108s" }
+      ],
+      "fastestLap": "1:29.473",
+      "lapsDistance": "22 / 310km",
+      "conditions": "DRY · 52°C"
+    },
+    "highlights": {
+      "label": "Last Race · Qatar GP 2026",
+      "raceName": "Qatar Grand Prix",
+      "duration": "8:43"
+    }
+  },
+  "telemetry": {
+    "speed": 312,
+    "lean": 62,
+    "gforce": 1.6,
+    "rpm": 85,
+    "ranges": {
+      "speed": { "min": 280, "max": 358 },
+      "lean": { "min": 0, "max": 65 },
+      "gforce": { "min": 0.5, "max": 2.0 },
+      "rpm": { "min": 60, "max": 98 }
+    }
+  },
+  "calendar": [
+    { "day": "21", "mon": "Mar", "race": "Austin GP", "circuit": "Circuit of The Americas · USA", "next": true },
+    { "day": "06", "mon": "Apr", "race": "Argentina GP", "circuit": "Termas de Río Hondo · ARG" },
+    { "day": "20", "mon": "Apr", "race": "Spain GP", "circuit": "Circuit de Jerez · ESP" }
+  ],
+  "nextRace": {
+    "name": "Austin GP",
+    "circuit": "Circuit of The Americas",
+    "date": "March 21, 2026",
+    "round": 2,
+    "countdown": { "days": "03", "hours": "14", "minutes": "22" },
+    "sessions": [
+      { "name": "Free Practice 1", "time": "Fri · 10:00" },
+      { "name": "Free Practice 2", "time": "Fri · 15:00" },
+      { "name": "Qualifying", "time": "Sat · 11:30" },
+      { "name": "Sprint Race", "time": "Sat · 15:00" },
+      { "name": "Main Race", "time": "Sun · 14:00" }
+    ]
+  }
+}

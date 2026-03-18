@@ -1,0 +1,19 @@
+{
+  "championship": [
+    { "pos": 1, "name": "M. Márquez", "pts": 142, "bar": "#E8002D", "delta": "▲2", "deltaClass": "delta-up", "leader": true },
+    { "pos": 2, "name": "F. Bagnaia", "pts": 138, "bar": "#00A8FF", "delta": "—", "deltaClass": "delta-same", "fav": true, "highlight": true },
+    { "pos": 3, "name": "J. Martín", "pts": 121, "bar": "#E8002D", "delta": "▲1", "deltaClass": "delta-up" },
+    { "pos": 4, "name": "A. Espargaro", "pts": 109, "bar": "#009900", "delta": "▼1", "deltaClass": "delta-down" },
+    { "pos": 5, "name": "E. Bastianini", "pts": 98, "bar": "#FFD700", "delta": "—", "deltaClass": "delta-same" }
+  ],
+  "live": [
+    { "pos": 1, "name": "M. Márquez", "gap": "LEADER", "team": "#E8002D", "leader": true },
+    { "pos": 2, "name": "F. Bagnaia", "gap": "+0.342", "team": "#00A8FF", "user": true },
+    { "pos": 3, "name": "J. Martín", "gap": "+1.108", "team": "#E8002D" },
+    { "pos": 4, "name": "A. Espargaro", "gap": "+4.221", "team": "#009900" },
+    { "pos": 5, "name": "E. Bastianini", "gap": "+5.687", "team": "#FFD700" },
+    { "pos": 6, "name": "B. Binder", "gap": "+7.334", "team": "#CC0099" },
+    { "pos": 7, "name": "J. Zarco", "gap": "+9.118", "team": "#FF6600" },
+    { "pos": 8, "name": "A. Rins", "gap": "+12.003", "team": "#009900" }
+  ]
+}

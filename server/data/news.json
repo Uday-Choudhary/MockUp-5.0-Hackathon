@@ -1,0 +1,29 @@
+{
+  "breaking": {
+    "tag": "Breaking",
+    "source": "MOTOGP.COM · 2 MIN AGO",
+    "headline": "Marquez confirms Ducati contract extension for 2027 season — multi-year deal signed",
+    "excerpt": "The six-time world champion ends months of speculation, securing his place at the Ducati Lenovo factory team for at least another two years.",
+    "meta": {
+      "publisher": "MotoGP.com",
+      "category": "Breaking News",
+      "time": "2 min ago"
+    }
+  },
+  "latest": [
+    { "hl": "Márquez sets new Lusail lap record in dominant display", "src": "MotoGP.com", "ago": "12m ago" },
+    { "hl": "Bagnaia: \"We had the pace to win — strategy cost us today\"", "src": "GPOne", "ago": "34m ago" },
+    { "hl": "Ducati confirm both riders on upgraded aero for COTA", "src": "Autosport", "ago": "1h ago" },
+    { "hl": "Michelin announce new tyre allocation for Austin weekend", "src": "Motorsport.com", "ago": "2h ago" }
+  ],
+  "feed": [
+    { "initials": "MM", "hl": "Márquez sets new Lusail lap record in dominant Qatar display — breaks 2019 benchmark", "meta": "Autosport · 34m ago" },
+    { "initials": "FB", "hl": "Bagnaia: \"We had the pace to win — tyre strategy decision cost us the victory\"", "meta": "GPOne · 1h ago", "rider": true },
+    { "initials": "JM", "hl": "Martín's P3 finish keeps championship gap to just 21 points ahead of Austin", "meta": "Motorsport.com · 1h ago" },
+    { "initials": "DC", "hl": "Ducati confirm both riders receive upgraded aero package for Circuit of Americas", "meta": "MotoGP.com · 2h ago" }
+  ],
+  "videos": [
+    { "title": "How Bagnaia corners at 320 km/h — onboard analysis", "dur": "4:32", "meta": "MotoGP Official · 3h ago" },
+    { "title": "Inside the Ducati pit wall — Qatar GP race strategy revealed", "dur": "6:18", "meta": "Box Raju · 5h ago" }
+  ]
+}

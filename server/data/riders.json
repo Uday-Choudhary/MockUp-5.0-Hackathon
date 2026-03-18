@@ -1,0 +1,255 @@
+[
+  {
+    "id": 1,
+    "name": "Marc Márquez",
+    "num": 93,
+    "team": "Ducati Lenovo Team",
+    "flag": ["#AD1519", "#FABD00", "#AD1519"],
+    "teamColor": "#E8002D",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/2/24/Marc_M%C3%A1rquez_at_Estrella_Galicia_stand_during_2025_Dutch_TT.jpg",
+    "country": "Spain",
+    "championships": 8,
+    "championshipLabel": "8× World Champion",
+    "seasonRank": "1st",
+    "points": 142,
+    "seasonWins": 11,
+    "podiums": 16,
+    "polePositions": 5,
+    "bike": {
+      "name": "2026 Desmosedici GP26",
+      "specs": [
+        { "text": "999cc V4 Engine", "sub": "90° V-CONFIG" },
+        { "text": "330+ km/h Top Speed", "sub": "LUSAIL 2026" },
+        { "text": "Seamless Shift Gearbox", "sub": "6-SPEED" },
+        { "text": "Full Carbon Aero Package", "sub": "GP26 SPEC" }
+      ]
+    },
+    "career": [
+      { "year": "2008", "label": "125cc Debut" },
+      { "year": "2010", "label": "★ 125cc Champion", "major": true },
+      { "year": "2012", "label": "★ Moto2 Champion", "major": true },
+      { "year": "2013", "label": "★ MotoGP Champion (Rookie!)", "major": true },
+      { "year": "2014", "label": "★ World Champion", "major": true },
+      { "year": "2016", "label": "★ World Champion", "major": true },
+      { "year": "2017", "label": "★ World Champion", "major": true },
+      { "year": "2018", "label": "★ World Champion", "major": true },
+      { "year": "2019", "label": "★ World Champion", "major": true },
+      { "year": "2024", "label": "Ducati Move" },
+      { "year": "2026", "label": "Current", "current": true }
+    ],
+    "recentResults": [
+      { "pos": "P1", "circuit": "Qatar GP · Lusail", "pts": "+25 pts", "cls": "pos-gold" },
+      { "pos": "P1", "circuit": "Thailand GP · Buriram", "pts": "+25 pts", "cls": "pos-gold" },
+      { "pos": "P2", "circuit": "Japan GP · Motegi", "pts": "+20 pts", "cls": "pos-silver" },
+      { "pos": "P1", "circuit": "Australia GP · Phillip Island", "pts": "+25 pts", "cls": "pos-gold" },
+      { "pos": "P3", "circuit": "Malaysia GP · Sepang", "pts": "+16 pts", "cls": "pos-bronze" }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Francesco Bagnaia",
+    "num": 1,
+    "team": "Ducati Lenovo Team",
+    "flag": ["#009246", "#FFF", "#CE2B37"],
+    "teamColor": "#E8002D",
+    "img": "https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcRLoPo0axzDvpUncjxytNuVCLIDMbLQ7CVwwCLuyiOil3sYmw0_OHUDgn6cZ5mIXFXDehbjAqlqPnKTO-tFbFTCKLiTLSzKtZAdMqW5uDFgQhwQL0i7KwGBCG9V4axyxwvaiT0hsrOfNTCI&s=19",
+    "country": "Italy",
+    "championships": 2,
+    "championshipLabel": "2× World Champion",
+    "seasonRank": "2nd",
+    "points": 138,
+    "seasonWins": 9,
+    "podiums": 18,
+    "polePositions": 3,
+    "bike": {
+      "name": "2026 Desmosedici GP26",
+      "specs": [
+        { "text": "999cc V4 Engine", "sub": "90° V-CONFIG" },
+        { "text": "330+ km/h Top Speed", "sub": "LUSAIL 2026" },
+        { "text": "Seamless Shift Gearbox", "sub": "6-SPEED" },
+        { "text": "Full Carbon Aero Package", "sub": "GP26 SPEC" }
+      ]
+    },
+    "career": [
+      { "year": "2013", "label": "Moto3 Debut" },
+      { "year": "2017", "label": "Moto2 Move" },
+      { "year": "2018", "label": "★ Moto2 Champion", "major": true },
+      { "year": "2019", "label": "MotoGP Debut" },
+      { "year": "2022", "label": "★ World Champion", "major": true },
+      { "year": "2023", "label": "★ World Champion", "major": true },
+      { "year": "2025", "label": "Runner-Up" },
+      { "year": "2026", "label": "Current", "current": true }
+    ],
+    "recentResults": [
+      { "pos": "P2", "circuit": "Qatar GP · Lusail", "pts": "+20 pts", "cls": "pos-silver" },
+      { "pos": "P1", "circuit": "Thailand GP · Buriram", "pts": "+25 pts", "cls": "pos-gold" },
+      { "pos": "P1", "circuit": "Japan GP · Motegi", "pts": "+25 pts", "cls": "pos-gold" },
+      { "pos": "P3", "circuit": "Australia GP · Phillip Island", "pts": "+16 pts", "cls": "pos-bronze" },
+      { "pos": "P1", "circuit": "Malaysia GP · Sepang", "pts": "+25 pts", "cls": "pos-gold" }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Jorge Martín",
+    "num": 89,
+    "team": "Pramac Racing",
+    "flag": ["#AD1519", "#FABD00", "#AD1519"],
+    "teamColor": "#E8002D",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMcXm9vvKHOikYJB3PtugH_PHcBPI9ZN7rQnlXZ3Pqo-bYiZX0joWedkSTkPvqAXLKZPQcYQowgj6FZjHUdcypz3_BWI61CnOkBFGPWvvenA&s=10",
+    "country": "Spain",
+    "championships": 0,
+    "championshipLabel": "2024 Vice-Champion",
+    "seasonRank": "3rd",
+    "points": 121,
+    "seasonWins": 5,
+    "podiums": 12,
+    "polePositions": 4,
+    "bike": {
+      "name": "2026 Desmosedici GP26",
+      "specs": [
+        { "text": "999cc V4 Engine", "sub": "90° V-CONFIG" },
+        { "text": "325+ km/h Top Speed", "sub": "LUSAIL 2026" },
+        { "text": "Seamless Shift Gearbox", "sub": "6-SPEED" },
+        { "text": "Updated Aero Package", "sub": "GP26 SPEC" }
+      ]
+    },
+    "career": [
+      { "year": "2015", "label": "Moto3 Debut" },
+      { "year": "2018", "label": "★ Moto3 Champion", "major": true },
+      { "year": "2019", "label": "Moto2 Move" },
+      { "year": "2021", "label": "MotoGP Debut" },
+      { "year": "2024", "label": "Vice-Champion" },
+      { "year": "2026", "label": "Current", "current": true }
+    ],
+    "recentResults": [
+      { "pos": "P3", "circuit": "Qatar GP · Lusail", "pts": "+16 pts", "cls": "pos-bronze" },
+      { "pos": "P2", "circuit": "Thailand GP · Buriram", "pts": "+20 pts", "cls": "pos-silver" },
+      { "pos": "P4", "circuit": "Japan GP · Motegi", "pts": "+13 pts", "cls": "" },
+      { "pos": "P1", "circuit": "Australia GP · Phillip Island", "pts": "+25 pts", "cls": "pos-gold" },
+      { "pos": "P2", "circuit": "Malaysia GP · Sepang", "pts": "+20 pts", "cls": "pos-silver" }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Franco Morbidelli",
+    "num": 21,
+    "team": "Ducati Lenovo Team",
+    "flag": ["#009246", "#FFF", "#CE2B37"],
+    "teamColor": "#E8002D",
+    "img": "https://www.motogp.com/en/riders/Franco+Morbidelli",
+    "country": "Italy",
+    "championships": 0,
+    "championshipLabel": "Moto2 Champion",
+    "seasonRank": "8th",
+    "points": 67,
+    "seasonWins": 1,
+    "podiums": 5,
+    "polePositions": 0,
+    "bike": {
+      "name": "2026 Desmosedici GP26",
+      "specs": [
+        { "text": "999cc V4 Engine", "sub": "90° V-CONFIG" },
+        { "text": "328+ km/h Top Speed", "sub": "LUSAIL 2026" },
+        { "text": "Seamless Shift Gearbox", "sub": "6-SPEED" },
+        { "text": "Full Carbon Aero Package", "sub": "GP26 SPEC" }
+      ]
+    },
+    "career": [
+      { "year": "2013", "label": "Moto3 Debut" },
+      { "year": "2015", "label": "Moto2 Move" },
+      { "year": "2017", "label": "★ Moto2 Champion", "major": true },
+      { "year": "2018", "label": "MotoGP Debut" },
+      { "year": "2020", "label": "Runner-Up" },
+      { "year": "2026", "label": "Current", "current": true }
+    ],
+    "recentResults": [
+      { "pos": "P7", "circuit": "Qatar GP · Lusail", "pts": "+9 pts", "cls": "" },
+      { "pos": "P5", "circuit": "Thailand GP · Buriram", "pts": "+11 pts", "cls": "" },
+      { "pos": "P6", "circuit": "Japan GP · Motegi", "pts": "+10 pts", "cls": "" },
+      { "pos": "P8", "circuit": "Australia GP · Phillip Island", "pts": "+8 pts", "cls": "" },
+      { "pos": "P4", "circuit": "Malaysia GP · Sepang", "pts": "+13 pts", "cls": "" }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Marco Bezzecchi",
+    "num": 72,
+    "team": "Aprilia Racing",
+    "flag": ["#009246", "#FFF", "#CE2B37"],
+    "teamColor": "#009900",
+    "img": "https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcRv3ct5rBfwrpPaeKmorrq8UTm4wSCsXU6wS3lwvgEmUfCnpkg49Ve1exwvoV6aiDO7-WcAsfaFy_z9Ef8FnBkzn7SAv0ikOBT-i13qgozyaezJlkdH0TvUE6YYdwvUPpPNGcxR588Iqa7W&s=19",
+    "country": "Italy",
+    "championships": 0,
+    "championshipLabel": "Rising Star",
+    "seasonRank": "6th",
+    "points": 89,
+    "seasonWins": 2,
+    "podiums": 7,
+    "polePositions": 1,
+    "bike": {
+      "name": "2026 RS-GP26",
+      "specs": [
+        { "text": "999cc V4 Engine", "sub": "NARROW V-CONFIG" },
+        { "text": "320+ km/h Top Speed", "sub": "LUSAIL 2026" },
+        { "text": "Pneumatic Valve Engine", "sub": "6-SPEED" },
+        { "text": "Concession Aero Package", "sub": "RS-GP26" }
+      ]
+    },
+    "career": [
+      { "year": "2017", "label": "Moto3 Debut" },
+      { "year": "2020", "label": "Moto2 Move" },
+      { "year": "2022", "label": "MotoGP Debut" },
+      { "year": "2023", "label": "3 Race Wins" },
+      { "year": "2025", "label": "Aprilia Move" },
+      { "year": "2026", "label": "Current", "current": true }
+    ],
+    "recentResults": [
+      { "pos": "P5", "circuit": "Qatar GP · Lusail", "pts": "+11 pts", "cls": "" },
+      { "pos": "P4", "circuit": "Thailand GP · Buriram", "pts": "+13 pts", "cls": "" },
+      { "pos": "P3", "circuit": "Japan GP · Motegi", "pts": "+16 pts", "cls": "pos-bronze" },
+      { "pos": "P6", "circuit": "Australia GP · Phillip Island", "pts": "+10 pts", "cls": "" },
+      { "pos": "P5", "circuit": "Malaysia GP · Sepang", "pts": "+11 pts", "cls": "" }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Aleix Espargaró",
+    "num": 41,
+    "team": "Aprilia Racing",
+    "flag": ["#AD1519", "#FABD00", "#AD1519"],
+    "teamColor": "#009900",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJHEpbKEyQYFKAbjZBDTq3LWBcOs2QC0FiFT5r8Y4a_slWiEccwfHpkl_fktYJ2rFSbw-c_vTI7ccM59fqSnodYCiXqrRbJ0nX4ysP1y1Zgw&s=10",
+    "country": "Spain",
+    "championships": 0,
+    "championshipLabel": "Factory Veteran",
+    "seasonRank": "4th",
+    "points": 109,
+    "seasonWins": 3,
+    "podiums": 9,
+    "polePositions": 2,
+    "bike": {
+      "name": "2026 RS-GP26",
+      "specs": [
+        { "text": "999cc V4 Engine", "sub": "NARROW V-CONFIG" },
+        { "text": "318+ km/h Top Speed", "sub": "LUSAIL 2026" },
+        { "text": "Pneumatic Valve Engine", "sub": "6-SPEED" },
+        { "text": "Concession Aero Package", "sub": "RS-GP26" }
+      ]
+    },
+    "career": [
+      { "year": "2009", "label": "125cc Debut" },
+      { "year": "2012", "label": "Moto2 Move" },
+      { "year": "2017", "label": "Aprilia MotoGP" },
+      { "year": "2022", "label": "First MotoGP Win" },
+      { "year": "2023", "label": "Multiple Podiums" },
+      { "year": "2026", "label": "Current", "current": true }
+    ],
+    "recentResults": [
+      { "pos": "P4", "circuit": "Qatar GP · Lusail", "pts": "+13 pts", "cls": "" },
+      { "pos": "P3", "circuit": "Thailand GP · Buriram", "pts": "+16 pts", "cls": "pos-bronze" },
+      { "pos": "P2", "circuit": "Japan GP · Motegi", "pts": "+20 pts", "cls": "pos-silver" },
+      { "pos": "P5", "circuit": "Australia GP · Phillip Island", "pts": "+11 pts", "cls": "" },
+      { "pos": "P1", "circuit": "Malaysia GP · Sepang", "pts": "+25 pts", "cls": "pos-gold" }
+    ]
+  }
+]
