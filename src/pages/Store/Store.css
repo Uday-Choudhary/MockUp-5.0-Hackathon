@@ -1,0 +1,107 @@
+/* Store */
+.store-main { flex: 1; display: flex; flex-direction: column; overflow-y: auto; }
+.store-topbar {
+  display: flex; align-items: center; gap: 16px;
+  padding: 14px 24px; border-bottom: 1px solid var(--card-border);
+  background: rgba(10,10,10,0.95); flex-shrink: 0;
+}
+.store-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 4px; color: var(--text-primary); flex-shrink: 0; }
+.search-bar {
+  flex: 1; max-width: 480px; display: flex; align-items: center; gap: 10px;
+  background: var(--card-surface); border: 1px solid var(--card-border);
+  border-radius: 10px; padding: 9px 14px; transition: border-color .15s;
+}
+.search-bar:focus-within { border-color: rgba(255,255,255,0.2); }
+.search-bar svg { width: 18px; height: 18px; flex-shrink: 0; }
+.search-bar input { flex: 1; background: none; border: none; outline: none; color: var(--text-primary); font-family: 'Inter', sans-serif; font-size: 13px; }
+.search-bar input::placeholder { color: var(--text-secondary); }
+.topbar-icons { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+.icon-btn {
+  width: 40px; height: 40px; background: var(--card-surface);
+  border: 1px solid var(--card-border); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; position: relative; font-size: 16px;
+  transition: border-color .15s;
+}
+.icon-btn:hover { border-color: rgba(255,255,255,0.2); }
+.cart-badge {
+  position: absolute; top: -4px; right: -4px;
+  background: var(--accent-blue); color: #fff;
+  width: 18px; height: 18px; border-radius: 50%;
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  font-weight: 700; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 8px rgba(0,168,255,0.4);
+}
+
+/* Category pills */
+.cat-row { display: flex; gap: 8px; padding: 12px 24px; border-bottom: 1px solid var(--card-border); background: rgba(8,8,8,0.9); overflow-x: auto; flex-shrink: 0; }
+.cat-row::-webkit-scrollbar { display: none; }
+.cpill { padding: 8px 18px; border-radius: 100px; font-size: 12px; font-weight: 600; cursor: pointer; border: 1px solid var(--card-border); color: var(--text-secondary); background: transparent; white-space: nowrap; transition: all .15s; }
+.cpill:hover { border-color: rgba(255,255,255,0.2); color: var(--text-primary); }
+.cpill.active { background: var(--accent-blue); border-color: var(--accent-blue); color: #fff; box-shadow: 0 0 12px rgba(0,168,255,0.3); }
+.cpill--drop { border-color: rgba(232,0,45,0.3); color: var(--accent-red); }
+.cpill--drop:hover { border-color: rgba(232,0,45,0.5); background: rgba(232,0,45,0.08); color: var(--accent-red); }
+
+/* Limited Drop */
+.drop-banner { padding: 16px 24px 0; flex-shrink: 0; }
+.drop-inner {
+  width: 100%; border-radius: 14px; padding: 22px;
+  display: flex; align-items: center; justify-content: space-between;
+  overflow: hidden; position: relative;
+  background: linear-gradient(135deg, rgba(232,0,45,0.12), rgba(0,168,255,0.06));
+  border: 1px solid rgba(232,0,45,0.25);
+  box-shadow: 0 0 30px rgba(232,0,45,0.08);
+}
+.drop-inner::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(232,0,45,0.3), rgba(0,168,255,0.2), transparent); }
+.drop-inner::after { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; background: rgba(232,0,45,0.05); }
+.drop-badge { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+.dbdot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-red); animation: pulse-dot 1.5s ease-in-out infinite; box-shadow: 0 0 8px rgba(232,0,45,0.5); }
+.drop-badge { background: var(--accent-red-dim); border: 1px solid rgba(232,0,45,0.3); padding: 4px 10px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 2.5px; color: var(--accent-red); display: inline-flex; }
+.drop-product { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 700; color: var(--text-primary); max-width: 320px; line-height: 1.35; margin-bottom: 8px; }
+.drop-scarcity { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--amber); letter-spacing: 0.5px; }
+.drop-center { text-align: center; }
+.drop-cd-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 2px; color: var(--text-secondary); margin-bottom: 8px; }
+.drop-cd { display: flex; gap: 6px; }
+.drop-cd-unit { display: flex; flex-direction: column; align-items: center; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 6px 8px; min-width: 44px; }
+.drop-cd-num { font-family: 'JetBrains Mono', monospace; font-size: 20px; font-weight: 700; color: var(--accent-red); line-height: 1; text-shadow: 0 0 12px rgba(232,0,45,0.4); }
+.drop-cd-lbl { font-family: 'JetBrains Mono', monospace; font-size: 8px; color: var(--text-secondary); letter-spacing: 1px; margin-top: 2px; }
+.drop-right { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.drop-price { font-family: 'Bebas Neue', sans-serif; font-size: 42px; color: var(--text-primary); line-height: 1; letter-spacing: 2px; }
+.drop-btns { display: flex; gap: 8px; }
+.btn-notify { padding: 9px 16px; border-radius: 8px; background: transparent; border: 1.5px solid var(--card-border-bright); color: var(--text-primary); font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; cursor: pointer; transition: all .15s; }
+.btn-notify:hover { border-color: rgba(255,255,255,0.3); }
+.btn-buy { padding: 9px 20px; border-radius: 8px; background: var(--accent-red); border: none; color: #fff; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; cursor: pointer; box-shadow: 0 4px 16px rgba(232,0,45,0.35); transition: all .15s; }
+.btn-buy:hover { box-shadow: 0 6px 24px rgba(232,0,45,0.5); transform: translateY(-1px); }
+
+/* Product Grid */
+.grid-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px 8px; }
+.grid-title { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 3px; color: var(--text-primary); }
+.grid-count { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 2px; color: var(--text-secondary); }
+.product-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; padding: 4px 24px 24px; }
+.product-card {
+  border-radius: 12px; overflow: hidden;
+  background: var(--card-surface);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border);
+  cursor: pointer; transition: all .25s; position: relative;
+}
+.product-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent); }
+.product-card:hover { border-color: rgba(255,255,255,0.18); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+.product-img { height: 140px; background: linear-gradient(160deg, #161616, #0D0D0D); position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.product-emoji { font-size: 48px; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5)); transition: transform .3s; }
+.product-card:hover .product-emoji { transform: scale(1.1); }
+.product-badge { position: absolute; top: 8px; right: 8px; font-family: 'JetBrains Mono', monospace; font-size: 8px; letter-spacing: 1px; padding: 3px 8px; border-radius: 4px; font-weight: 700; }
+.badge-best { background: var(--accent-blue-dim); color: var(--accent-blue); border: 1px solid rgba(0,168,255,0.3); }
+.badge-ticket { background: rgba(245,158,11,0.12); color: var(--amber); border: 1px solid rgba(245,158,11,0.3); }
+.badge-ar { background: var(--purple-dim); color: var(--purple-sector); border: 1px solid rgba(155,48,255,0.3); }
+.product-body { padding: 12px; }
+.product-name { font-size: 12px; font-weight: 600; color: var(--text-primary); line-height: 1.35; margin-bottom: 6px; }
+.product-price { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; color: var(--accent-blue); }
+.quick-add { padding: 0 12px 12px; }
+.qa-btn {
+  width: 100%; padding: 9px 0; border: 1.5px solid var(--card-border-bright);
+  background: transparent; border-radius: 8px; color: var(--text-primary);
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.5px; cursor: pointer; transition: all .15s;
+}
+.qa-btn:hover { border-color: var(--accent-blue); color: var(--accent-blue); background: var(--accent-blue-dim); }

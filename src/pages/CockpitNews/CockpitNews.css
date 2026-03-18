@@ -1,0 +1,220 @@
+.news-layout { display: flex; width: 100%; min-height: 100vh; }
+.news-layout .sidebar { background: #FFFFFF; border-right: 1px solid #E5E5E5; }
+.news-layout .logo-badge { background: #0D0D0D; box-shadow: none; }
+.news-layout .logo-badge::after { display: none; }
+.news-layout .logo-text .brand { color: #0D0D0D; }
+.news-layout .logo-text .sub { color: #6B6B6B; }
+.news-layout .logo-mark { border-bottom-color: #E5E5E5; }
+.news-layout .sidebar-nav-item { color: #6B6B6B; }
+.news-layout .sidebar-nav-item:hover { background: #F2F2F2; color: #0D0D0D; }
+.news-layout .sidebar-nav-item.active { background: #F2F2F2; color: #0D0D0D; }
+.news-layout .sidebar-nav-item.active::before { background: #0D0D0D; box-shadow: none; }
+.news-layout .race-mode-section { border-top-color: #E5E5E5; }
+.news-layout .race-mode-row { background: #F2F2F2; border-color: #E5E5E5; }
+.news-layout .race-mode-text { color: #6B6B6B; }
+.news-layout .race-mode-status { color: #BBB; }
+.news-layout .user-area { border-top-color: #E5E5E5; }
+.news-layout .user-avatar { background: #F2F2F2; border-color: #E5E5E5; color: #0D0D0D; }
+.news-layout .user-info .uname { color: #0D0D0D; }
+.news-layout .user-info .ufav { color: #6B6B6B; }
+
+/* Center Main */
+.news-center {
+  flex: 1; min-width: 0;
+  border-right: 1px solid #E5E5E5;
+  display: flex; flex-direction: column;
+  background: #F8F8F8;
+}
+.news-topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 24px; border-bottom: 1px solid #E5E5E5;
+  background: #FFF; flex-shrink: 0;
+}
+.news-cockpit-title {
+  font-family: 'Bebas Neue', sans-serif; font-size: 28px;
+  letter-spacing: 4px; color: #0D0D0D; line-height: 1;
+}
+.news-cockpit-sub {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  color: #6B6B6B; letter-spacing: 1px; margin-top: 3px;
+}
+.race-mode-pill {
+  display: flex; align-items: center; gap: 7px;
+  padding: 9px 18px; background: #0D0D0D; border-radius: 100px;
+  cursor: pointer; transition: all .18s;
+}
+.race-mode-pill:hover { background: #222; }
+.race-mode-pill span { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; color: #fff; letter-spacing: 0.5px; }
+.pill-bolt { font-size: 13px; }
+
+/* Video */
+.news-video-section { padding: 20px 24px 0; flex-shrink: 0; }
+.news-video-box {
+  width: 100%; aspect-ratio: 16/9;
+  background: linear-gradient(160deg, #1A1A1A, #0D0D0D);
+  border-radius: 14px; position: relative; overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 8px 32px rgba(0,0,0,0.06);
+}
+.news-video-box::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%); z-index: 1;
+}
+.nvid-grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.nvid-label {
+  position: absolute; top: 14px; left: 16px; z-index: 3;
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 2px; color: rgba(255,255,255,0.5); text-transform: uppercase;
+  background: rgba(0,0,0,0.4); padding: 4px 8px; border-radius: 4px;
+}
+.nvid-center {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; z-index: 2;
+}
+.nplay-btn {
+  width: 60px; height: 60px; border-radius: 50%;
+  background: rgba(255,255,255,0.95);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); cursor: pointer;
+}
+.nplay-btn svg { width: 22px; height: 22px; fill: #0D0D0D; margin-left: 4px; }
+.nplay-label {
+  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700;
+  color: rgba(255,255,255,0.9); letter-spacing: 0.5px;
+}
+.nvid-bottom { position: absolute; bottom: 16px; left: 16px; z-index: 3; }
+.nvid-race-label { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 3px; color: #fff; }
+.nvid-race-sub { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: rgba(255,255,255,0.5); letter-spacing: 1.5px; margin-top: 2px; }
+
+/* Tabs */
+.news-content-tabs {
+  display: flex; gap: 2px; padding: 14px 24px;
+  border-bottom: 1px solid #E5E5E5; background: #FFF;
+}
+.nctab {
+  padding: 9px 20px; border-radius: 8px; font-size: 13px; font-weight: 600;
+  color: #6B6B6B; cursor: pointer; transition: all .15s;
+}
+.nctab:hover { background: #F2F2F2; color: #0D0D0D; }
+.nctab.active { background: #0D0D0D; color: #fff; }
+
+/* Content */
+.news-content {
+  flex: 1; overflow-y: auto; padding: 20px 24px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.result-card {
+  background: #FFF; border-radius: 14px; padding: 22px;
+  border: 1px solid #E5E5E5; box-shadow: 0 1px 4px rgba(0,0,0,0.07), 0 4px 16px rgba(0,0,0,0.04);
+}
+.rc-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+.rc-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 3px; color: #0D0D0D; }
+.rc-badge {
+  background: #E8002D; color: #fff; font-family: 'JetBrains Mono', monospace;
+  font-size: 8px; letter-spacing: 2px; padding: 4px 9px; border-radius: 4px; font-weight: 700;
+}
+.podium-row { display: flex; gap: 12px; margin-bottom: 18px; }
+.podium-item {
+  flex: 1; padding: 16px 14px; border-radius: 10px;
+  background: #F8F8F8; border: 1px solid #E5E5E5; text-align: center;
+}
+.podium-item:first-child { border-color: #FFD700; background: rgba(255,215,0,0.04); }
+.podium-pos { font-family: 'Bebas Neue', sans-serif; font-size: 40px; line-height: 1; color: #6B6B6B; }
+.podium-item:first-child .podium-pos { color: #B8960A; }
+.podium-name { font-size: 13px; font-weight: 700; color: #0D0D0D; margin-top: 4px; }
+.podium-team { font-size: 10px; color: #6B6B6B; margin-top: 2px; }
+.podium-time { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #6B6B6B; margin-top: 6px; }
+.result-meta { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; padding-top: 16px; border-top: 1px solid #E5E5E5; }
+.rmeta-cell { text-align: center; }
+.rmeta-val { font-family: 'JetBrains Mono', monospace; font-size: 15px; font-weight: 700; color: #0D0D0D; }
+.rmeta-lbl { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #6B6B6B; margin-top: 3px; }
+
+/* Coming Up */
+.coming-card {
+  background: #0D0D0D; border-radius: 14px; padding: 22px;
+  display: flex; align-items: center; justify-content: space-between;
+  overflow: hidden; position: relative;
+}
+.coming-card::before {
+  content: ''; position: absolute; top: -60px; right: -60px;
+  width: 220px; height: 220px; border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+}
+.coming-eyebrow {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.45); margin-bottom: 8px;
+}
+.coming-title {
+  font-family: 'Bebas Neue', sans-serif; font-size: 40px;
+  letter-spacing: 4px; color: #fff; line-height: 1; margin-bottom: 8px;
+}
+.coming-date { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 16px; }
+.coming-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 700; color: #E8002D; cursor: pointer;
+}
+.circuit-box {
+  width: 200px; height: 120px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.circuit-box svg { width: 160px; height: 90px; opacity: 0.6; }
+
+/* Right Sidebar */
+.news-right-sidebar {
+  width: 380px; flex-shrink: 0;
+  background: #FFF; display: flex; flex-direction: column; overflow-y: auto;
+}
+.nrs-block { padding: 20px; border-bottom: 1px solid #E5E5E5; }
+.nrs-block:last-child { border-bottom: none; }
+.nrs-title { font-family: 'Bebas Neue', sans-serif; font-size: 17px; letter-spacing: 2.5px; color: #0D0D0D; margin-bottom: 14px; }
+.standings-table { width: 100%; border-collapse: collapse; }
+.standings-table th {
+  font-family: 'JetBrains Mono', monospace; font-size: 8px;
+  letter-spacing: 1.5px; text-transform: uppercase; color: #6B6B6B;
+  text-align: left; padding: 0 6px 10px; font-weight: 500;
+}
+.standings-table td { padding: 9px 6px; border-top: 1px solid #E5E5E5; font-size: 12px; vertical-align: middle; }
+.standings-table tr:first-child td { border-top: none; }
+.s-pos { font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: #6B6B6B; width: 28px; }
+.s-bar { width: 4px; height: 20px; border-radius: 2px; display: inline-block; }
+.s-name { font-weight: 700; color: #0D0D0D; padding-left: 6px; }
+.s-pts { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #0D0D0D; font-weight: 700; text-align: right; }
+.leader-row td { background: rgba(255,215,0,0.04); }
+.leader-row .s-pos { color: #B8960A; }
+
+/* News items */
+.news-item-n {
+  display: flex; flex-direction: column; gap: 4px;
+  padding: 10px 0; border-bottom: 1px solid #E5E5E5; cursor: pointer;
+}
+.news-item-n:last-child { border-bottom: none; }
+.news-item-n:hover .news-hl-n { color: #E8002D; }
+.news-hl-n { font-size: 13px; font-weight: 600; color: #0D0D0D; line-height: 1.4; transition: color .15s; }
+.news-meta-n { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: #6B6B6B; letter-spacing: 0.5px; display: flex; gap: 8px; }
+
+/* Calendar */
+.cal-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #E5E5E5; }
+.cal-item:last-child { border-bottom: none; }
+.cal-date-box {
+  width: 44px; height: 44px; background: #F2F2F2; border-radius: 8px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0;
+  border: 1px solid #E5E5E5;
+}
+.cal-day { font-family: 'Bebas Neue', sans-serif; font-size: 20px; line-height: 1; color: #0D0D0D; }
+.cal-mon { font-family: 'JetBrains Mono', monospace; font-size: 7px; letter-spacing: 1px; color: #6B6B6B; text-transform: uppercase; }
+.cal-race { font-size: 13px; font-weight: 700; color: #0D0D0D; }
+.cal-circuit { font-size: 11px; color: #6B6B6B; margin-top: 2px; }
+.cal-next {
+  display: inline-block; margin-top: 3px;
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  color: #E8002D; background: rgba(232,0,45,0.07);
+  border: 1px solid rgba(232,0,45,0.15); padding: 2px 7px;
+  border-radius: 3px; letter-spacing: 0.5px;
+}

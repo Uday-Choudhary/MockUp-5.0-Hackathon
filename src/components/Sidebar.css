@@ -1,0 +1,237 @@
+.sidebar {
+  width: 240px;
+  min-height: 100vh;
+  flex-shrink: 0;
+  background: rgba(10,10,10,0.98);
+  border-right: 1px solid var(--card-border);
+  display: flex;
+  flex-direction: column;
+  padding: 22px 14px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Logo */
+.logo-mark {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 0 8px 22px;
+  border-bottom: 1px solid var(--card-border);
+  margin-bottom: 22px;
+}
+
+.logo-badge {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, var(--accent-blue), #0077CC);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  color: #fff;
+  letter-spacing: 1px;
+  box-shadow: 0 0 18px rgba(0,168,255,0.5), 0 0 40px rgba(0,168,255,0.2);
+  position: relative;
+}
+
+.logo-badge::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 13px;
+  border: 1px solid rgba(0,168,255,0.4);
+}
+
+.logo-text .brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 17px;
+  letter-spacing: 2px;
+  color: var(--text-primary);
+}
+
+.logo-text .sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  color: var(--text-secondary);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* Nav */
+.sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.sidebar-nav-item:hover {
+  background: rgba(255,255,255,0.04);
+  color: var(--text-primary);
+}
+
+.sidebar-nav-item.active {
+  background: var(--accent-blue-dim);
+  color: var(--accent-blue);
+  font-weight: 700;
+}
+
+.sidebar-nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 3px;
+  border-radius: 0 2px 2px 0;
+  background: var(--accent-blue);
+  box-shadow: 0 0 8px var(--accent-blue);
+}
+
+.nav-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nav-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* Race Mode Toggle */
+.race-mode-section {
+  margin-top: 16px;
+  padding-top: 20px;
+  border-top: 1px solid var(--card-border);
+}
+
+.race-mode-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.race-mode-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--accent-blue-dim);
+  border: 1px solid rgba(0,168,255,0.2);
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+
+.race-mode-text {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent-blue);
+}
+
+.race-mode-status {
+  font-size: 9px;
+  color: rgba(0,168,255,0.6);
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 1px;
+  margin-top: 1px;
+}
+
+.toggle {
+  width: 40px;
+  height: 22px;
+  background: var(--accent-blue);
+  border-radius: 11px;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,168,255,0.5);
+}
+
+.toggle::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+
+.toggle--off {
+  background: #333;
+  box-shadow: none;
+}
+
+.toggle--off::after {
+  right: auto;
+  left: 3px;
+  background: #777;
+}
+
+/* User area */
+.user-area {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid var(--card-border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #333, #222);
+  border: 1.5px solid var(--card-border-bright);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+.user-info .uname {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.user-info .ufav {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--accent-blue);
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}

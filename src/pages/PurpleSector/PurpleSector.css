@@ -1,0 +1,79 @@
+@keyframes line-shoot { 0% { transform: translateX(-100%); opacity: 0; } 20% { opacity: 1; } 100% { transform: translateX(200%); opacity: 0; } }
+@keyframes ring-pulse-1 { 0%,100% { transform: translate(-50%,-50%) scale(1); opacity: 0.15; } 50% { transform: translate(-50%,-50%) scale(1.15); opacity: 0.3; } }
+@keyframes ring-pulse-2 { 0%,100% { transform: translate(-50%,-50%) scale(0.9); opacity: 0.1; } 50% { transform: translate(-50%,-50%) scale(1.1); opacity: 0.25; } }
+@keyframes ring-pulse-3 { 0%,100% { transform: translate(-50%,-50%) scale(0.8); opacity: 0.06; } 50% { transform: translate(-50%,-50%) scale(1.05); opacity: 0.15; } }
+@keyframes ps-float { 0% { transform: translateY(100vh); opacity: 0; } 10% { opacity: 0.8; } 100% { transform: translateY(-20vh); opacity: 0; } }
+@keyframes ps-fade-in { 0% { opacity: 0; transform: scale(0.9); } 100% { opacity: 1; transform: scale(1); } }
+
+.ps-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: radial-gradient(ellipse at center, rgba(100,0,220,0.35) 0%, rgba(50,0,140,0.25) 30%, rgba(13,13,13,0.97) 70%);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; overflow: hidden;
+}
+
+/* Speed lines */
+.speed-lines { position: absolute; inset: 0; z-index: 1; overflow: hidden; }
+.speed-line {
+  position: absolute; left: 0; width: 100%; height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(155,48,255,0.5) 40%, rgba(200,140,255,0.8) 50%, rgba(155,48,255,0.5) 60%, transparent 100%);
+  animation: line-shoot linear infinite;
+}
+
+/* Glow rings */
+.ring { position: absolute; top: 50%; left: 50%; border-radius: 50%; border: 2px solid rgba(155,48,255,0.3); z-index: 1; }
+.ring-1 { width: 500px; height: 500px; animation: ring-pulse-1 2.5s ease-in-out infinite; box-shadow: 0 0 40px rgba(155,48,255,0.15), inset 0 0 40px rgba(155,48,255,0.08); }
+.ring-2 { width: 360px; height: 360px; animation: ring-pulse-2 2s ease-in-out infinite 0.4s; border-color: rgba(155,48,255,0.25); }
+.ring-3 { width: 220px; height: 220px; animation: ring-pulse-3 1.5s ease-in-out infinite 0.8s; border-color: rgba(200,140,255,0.3); }
+
+/* Center */
+.ps-center { position: relative; z-index: 5; text-align: center; animation: ps-fade-in 0.4s ease-out; }
+.ps-sector-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(155,48,255,0.15); border: 1.5px solid rgba(155,48,255,0.4);
+  padding: 8px 24px; border-radius: 8px; margin-bottom: 20px;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700;
+  letter-spacing: 4px; color: #C88EFF;
+  box-shadow: 0 0 20px rgba(155,48,255,0.3);
+}
+.ps-star { color: #C88EFF; font-size: 14px; }
+.ps-rider-name {
+  font-family: 'Bebas Neue', sans-serif; font-size: 110px;
+  letter-spacing: 12px; line-height: 0.9; color: #fff; margin-bottom: 8px;
+  text-shadow: 0 0 40px rgba(155,48,255,0.6), 0 0 80px rgba(155,48,255,0.3), 0 4px 30px rgba(0,0,0,0.5);
+}
+.ps-time {
+  font-family: 'JetBrains Mono', monospace; font-size: 70px; font-weight: 700;
+  color: #C88EFF; line-height: 1;
+  text-shadow: 0 0 30px rgba(155,48,255,0.5), 0 0 60px rgba(155,48,255,0.2);
+  margin-bottom: 10px;
+}
+.ps-sector-id {
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
+  letter-spacing: 4px; color: rgba(200,142,255,0.6); margin-bottom: 36px;
+}
+
+/* Meta */
+.ps-meta { display: flex; align-items: center; justify-content: center; gap: 28px; margin-bottom: 44px; }
+.ps-meta-val {
+  font-family: 'JetBrains Mono', monospace; font-size: 24px; font-weight: 700;
+  color: white; text-shadow: 0 0 12px rgba(155,48,255,0.4); line-height: 1;
+}
+.ps-meta-lbl {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 2px; color: rgba(200,142,255,0.5); text-transform: uppercase; margin-top: 4px;
+}
+.ps-divider { width: 1px; height: 32px; background: rgba(155,48,255,0.3); }
+.ps-dismiss {
+  font-family: 'Inter', sans-serif; font-size: 12px;
+  color: rgba(200,142,255,0.35); letter-spacing: 1px;
+}
+
+/* Particles */
+.ps-particles { position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; }
+.ps-particle {
+  position: absolute; bottom: -10px;
+  border-radius: 50%; background: rgba(155,48,255,0.4);
+  box-shadow: 0 0 6px rgba(155,48,255,0.3);
+  animation: ps-float linear infinite;
+}
